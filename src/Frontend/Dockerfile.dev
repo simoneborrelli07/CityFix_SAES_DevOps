@@ -12,7 +12,7 @@ RUN npm ci
 COPY . .
 
 # Espone la porta 8080 (configurata in vite.config.ts)
-EXPOSE 8080
+EXPOSE 8081
 
 # Comando di avvio in modalità sviluppo
 CMD ["npm", "run", "dev"]
