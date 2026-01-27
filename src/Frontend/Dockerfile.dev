@@ -1,0 +1,18 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copia i file di configurazione
+COPY package*.json ./
+
+# Installa le dipendenze
+RUN npm ci
+
+# Copia tutto il codice
+COPY . .
+
+# Espone la porta 8080 (configurata in vite.config.ts)
+EXPOSE 8080
+
+# Comando di avvio in modalità sviluppo
+CMD ["npm", "run", "dev"]
