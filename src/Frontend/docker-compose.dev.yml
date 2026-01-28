@@ -1,0 +1,18 @@
+services:
+  # Servizio Frontend
+  cityfix-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8081:5000" # Mappiamo la porta 5000
+    volumes:
+      # Preserva la cartella node_modules del container
+      # impedendo che venga sovrascritta dalla cartella locale (che potrebbe non averla)
+      - /app/node_modules
+      # Monta il codice sorgente locale dentro il container per l'hot reload
+      - .:/app
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true # Necessario per far funzionare l'hot reload su Windows/WSL
+      - WATCHPACK_POLLING=true
