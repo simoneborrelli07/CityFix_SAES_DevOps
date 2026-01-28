@@ -1,9 +1,0 @@
-version: '3.8'
-
-services:
-  frontend:
-    build: .
-    ports:
-      - "8081:80"
-    container_name: cityfix-frontend
-    restart: unless-stopped
